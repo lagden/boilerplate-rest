@@ -1,0 +1,76 @@
+#!/bin/bash
+
+DIR="$( cd -P "$( dirname "$0" )" && pwd )"
+
+# Import functions
+. $DIR/_fn
+
+usage() {
+	cat <<-EOF
+
+  Usage: $0 [-i] [-e <staging|production>]
+
+  Options:
+    -i   Ignore build image
+    -e   Environment
+    -h   Show usage
+
+EOF
+exit 0
+}
+
+# Go to project root
+cd $DIR
+cd ..
+
+CURR_FOLDER=`pwd`
+BUILD=1
+OPT="staging"
+
+while getopts ":ie:" o
+do
+	case ${o} in
+		i) BUILD=0 ;;
+		e) [ $OPTARG = "staging" -o $OPTARG = "production" ] && OPT=$OPTARG || usage ;;
+		*) usage ;;
+	esac
+done
+
+# ENV File
+ENVFILE="${CURR_FOLDER}/.env-${OPT}"
+if test ! -e $ENVFILE; then
+	abort "Environment file not found"
+fi
+
+set -a
+source $ENVFILE
+
+# BUILD IMAGE and PUSH
+if test $BUILD == 1; then
+	$CURR_FOLDER/bin/image -e $OPT
+	test $? -ne 0 && abort "Image build fail" || ok "Image build done"
+fi
+
+# Deploy
+USER=docker
+SERVER=your.server.com
+DEPLOY_FOLDER="/path/api/rest"
+
+# Criando docker-compose
+COMPOSE_TEMPLATE="${CURR_FOLDER}/docker-compose.template.yml"
+COMPOSE_DEPLOY="${CURR_FOLDER}/docker-compose-${OPT}.yml"
+envsubst < $COMPOSE_TEMPLATE > $COMPOSE_DEPLOY
+
+# Sync
+rsync -avzlh --rsync-path="mkdir -p ${DEPLOY_FOLDER}; /usr/bin/rsync" -e ssh -r --delete --include-from $CURR_FOLDER/.rsync-include --exclude-from $CURR_FOLDER/.rsync-exclude $CURR_FOLDER/. $USER@$SERVER:$DEPLOY_FOLDER > $CURR_FOLDER/.rsync.log
+test $? -ne 0 && abort "Rsync fail" || ok "Rsync done"
+
+# Run
+ssh -T $USER@$SERVER <<EOF
+cd $DEPLOY_FOLDER
+/usr/bin/docker stack deploy --with-registry-auth --prune --compose-file docker-compose-${OPT}.yml marsh_nimble_rd_${OPT}
+exit 0
+EOF
+
+ok 'Yeahh!!'
+exit 0

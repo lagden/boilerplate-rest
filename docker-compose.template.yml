@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  api_boilerplate:
+    image: ${REGISTRY}/${IMAGE}:${VERSION}
+    command: ["node", "server"]
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+      - DEBUG_COLORS=1
+      - DEBUG=${DEBUG}
+      - DEBUG_PREFIX=${DEBUG_PREFIX}
+      - SECRET_KEY=${SECRET_KEY}
+      - VERSION=${VERSION}
+    ports:
+      - ${PORT_PUBLISHED}:${PORT}
+    secrets:
+      - api_rest_key
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+secrets:
+  api_rest_key:
+    name: api_rest_key_${NODE_ENV}
+    external: true

@@ -1,0 +1,6 @@
+{
+  "events": {
+    "restart": "npm start"
+  },
+  "ignore": ["public/*"]
+}

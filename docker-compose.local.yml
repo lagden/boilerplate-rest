@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  api_boilerplate:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+      args:
+        PORT: ${PORT}
+        NODE_ENV: ${NODE_ENV}
+        VERSION: ${VERSION}
+    command: ["npm", "start"]
+    volumes:
+      - ./server:/home/node/app/server
+      - ./test:/home/node/app/test
+      - ./package.json:/home/node/app/package.json
+      - ./nodemon.json:/home/node/app/nodemon.json
+      - ./ava.config.js:/home/node/app/ava.config.js
+      - ./.eslintrc.js:/home/node/app/.eslintrc.js
+      - ./.gitignore:/home/node/app/.gitignore

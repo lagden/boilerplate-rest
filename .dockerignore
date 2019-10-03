@@ -1,0 +1,8 @@
+.*
+bin
+node_modules
+public
+test
+docker-compose*
+Dockerfile
+nodemon.json
