@@ -45,7 +45,7 @@ bin/start -bd
 
 Sobre os parâmetros:
 
- - `-b` Efetua o build da imagem (só é necessário passar houver alteração nos pacotes)
+ - `-b` Efetua o build da imagem (é necessário passar quando houver alteração nos pacotes)
  - `-d` Roda em background
 
 
@@ -75,7 +75,7 @@ npm i
 ...então inicie:
 
 ```
-env DEBUG_PREFIX=api_rest DEBUG=api_rest:* SECRET_KEY='chave secreta' npm start
+env DEBUG_PREFIX=api_rest DEBUG=api_rest:\* SECRET_KEY='chave secreta' npm start
 ```
 
 Acesse seu endpoint: [http://[::1]:3000](http://[::1]:3000)
