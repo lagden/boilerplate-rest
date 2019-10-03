@@ -49,7 +49,7 @@ Sobre os parâmetros:
  - `-d` Roda em background
 
 
-Acesse seu endpoint: [http://[::1]:31000](http://[::1]:31000).  
+Acesse seu endpoint: [http://[::1]:31000/user](http://[::1]:31000/user).  
 É possível acompanhar os logs:
 
 ```
@@ -78,7 +78,7 @@ npm i
 env DEBUG_PREFIX=api_rest DEBUG=api_rest:\* SECRET_KEY='chave secreta' npm start
 ```
 
-Acesse seu endpoint: [http://[::1]:3000](http://[::1]:3000)
+Acesse seu endpoint: [http://[::1]:3000/user](http://[::1]:3000/user)
 
 
 Para testar sua API:
