@@ -1,7 +1,8 @@
 'use strict'
 
-const Router = require('koa-router')
+const Router = require('@koa/router')
 const bodyparser = require('koa-bodyparser')
+const auth = require('../middleware/auth')
 const debug = require('../lib/debug')
 const db = require('../lib/db')
 
@@ -34,8 +35,8 @@ function save(ctx) {
 }
 
 router
-	.get('/user', user)
-	.get('/user/:id', user)
-	.post('/user', bodyparser(), save)
+	.get('/user', auth, user)
+	.get('/user/:id', auth, user)
+	.post('/user', bodyparser(), auth, save)
 
 module.exports = router

@@ -13,7 +13,6 @@ services:
       - ./server:/home/node/app/server
       - ./test:/home/node/app/test
       - ./package.json:/home/node/app/package.json
-      - ./nodemon.json:/home/node/app/nodemon.json
       - ./ava.config.js:/home/node/app/ava.config.js
       - ./.eslintrc.js:/home/node/app/.eslintrc.js
       - ./.gitignore:/home/node/app/.gitignore
