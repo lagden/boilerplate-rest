@@ -1,7 +1,6 @@
 # Api
 docker-compose-*
-.registry-user
-.registry-passwd
+.registry-*
 
 # Logs
 logs
