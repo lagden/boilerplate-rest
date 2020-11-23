@@ -8,7 +8,7 @@ DIR="$( cd -P "$( dirname "$0" )" && pwd )"
 usage() {
 	cat <<-EOF
 
-  Usage: $0 [-e <production|staging>]
+  Usage: $0 -e <production|staging>
 
   Options:
     -e   Environment
@@ -23,7 +23,7 @@ cd $DIR
 cd ..
 
 CURR_FOLDER=`pwd`
-OPT="staging"
+# OPT="staging"
 
 while getopts ":e:" o
 do
@@ -33,14 +33,12 @@ do
 	esac
 done
 
-# ENV File
-ENVFILE="${CURR_FOLDER}/.env-${OPT}"
-if test ! -e $ENVFILE; then
-	abort "Environment file not found"
+if test -z ${OPT}; then
+	abort "Missing environment"
 fi
 
-set -a
-source $ENVFILE
+# ENV File
+load_env $CURR_FOLDER $OPT
 
 ## Variables
 REGISTRY_HOST="${REGISTRY}"
@@ -50,18 +48,25 @@ TAG_IMAGE="${REGISTRY_HOST}/${IMAGE}:${VERSION}"
 
 ## Build
 docker build \
-	--build-arg PORT=${PORT} \
 	--build-arg NODE_ENV=${NODE_ENV} \
+	--build-arg APP_ENV=${APP_ENV} \
 	--build-arg VERSION=${VERSION} \
+	--build-arg APP_NS=${APP_NS} \
+	--build-arg TARGET_JS=${TARGET_JS} \
+	--build-arg PUBLIC_PATH=${PUBLIC_PATH} \
+	--build-arg TOKEN_NAME=${TOKEN_NAME} \
+	--build-arg SERVICE_API_CEP=${SERVICE_API_CEP} \
+	--build-arg SERVICE_API_FORM_TEMPLATE=${SERVICE_API_FORM_TEMPLATE} \
+	--build-arg SERVICE_API_AUTH=${SERVICE_API_AUTH} \
 	--compress --force-rm --no-cache . --tag $TAG_IMAGE
-test $? -ne 0 && abort "Build fail" || ok "Build complete"
+test $? -ne 0 && abort "Falha no build da image --> ${build}" || ok "Build image ok --> ${build}"
 
 ## Push (Send Docker image to Registry)
-docker login -u $REGISTRY_USER -p $REGISTRY_PASSWD $REGISTRY_HOST
+cat ${CURR_FOLDER}/.registry-passwd | docker login $REGISTRY_HOST --username $REGISTRY_USER --password-stdin
 docker push $TAG_IMAGE
 
 docker rmi $(docker images -q -f "dangling=true" -f "label=autodelete=true")
 
-ok "Build accomplished"
+ok "Build finalizado... Yeahh!!!"
 
 exit 0

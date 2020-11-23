@@ -1,25 +1,21 @@
-FROM node:12.10-alpine
+# APP Prod ou Staging
+FROM node:14.5-alpine3.12
 
 LABEL maintainer="docker@lagden.in"
 
-ARG PORT=3000
-ARG NODE_ENV=development
-ARG BASE=/home/node
-ARG VERSION=dev
+ARG NODE_ENV="production"
+ARG BASE="/home/node"
 
 ENV NODE_ENV=$NODE_ENV
-ENV PORT=$PORT
 ENV BASE=$BASE
-ENV VERSION=$VERSION
-ENV APP=$BASE/app
+ENV BASE_APP=$BASE/app
 
-USER node
 WORKDIR $BASE
 
-RUN mkdir -p $APP
-COPY . $APP
+ADD --chown=node:node . $BASE_APP
 
-WORKDIR $APP
-RUN npm ci --ignore-scripts
+WORKDIR $BASE_APP
 
-EXPOSE $PORT
+RUN npm ci --ignore-scripts --production
+
+USER node

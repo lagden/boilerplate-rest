@@ -1,18 +1,22 @@
-version: '3.7'
+version: "3.7"
 services:
-  api_boilerplate:
+  app:
+    tty: true
     build:
-      dockerfile: ./Dockerfile
+      dockerfile: ${DOCKERFILE}
       context: ./
       args:
-        PORT: ${PORT}
         NODE_ENV: ${NODE_ENV}
-        VERSION: ${VERSION}
-    command: ["npm", "start"]
+        ARG_ENTR_INOTIFY_WORKAROUND: ${ARG_ENTR_INOTIFY_WORKAROUND:-1}
+    # depends_on:
+    #   - seu_db_ou_dependencia
+    command: >
+      /bin/ash -c "
+        bin/watch
+      "
+    environment:
+      WATCH_FOLDERS: "${WATCH_FOLDERS}"
+      WATCH_CMD: "${WATCH_CMD}"
     volumes:
-      - ./server:/home/node/app/server
-      - ./test:/home/node/app/test
-      - ./package.json:/home/node/app/package.json
-      - ./ava.config.js:/home/node/app/ava.config.js
-      - ./.eslintrc.js:/home/node/app/.eslintrc.js
-      - ./.gitignore:/home/node/app/.gitignore
+      - .:/home/node/app
+      - /home/node/app/node_modules

@@ -1,27 +1,33 @@
 {
-  "name": "api-boilerplate",
+  "name": "boilerplate-rest",
   "version": "1.0.0",
+  "license": "MIT",
   "scripts": {
-    "lint": "eslint --config .eslintrc.js --ext .js --ignore-path .gitignore .",
-    "pretest": "npm run lint",
+    "eslint": "eslint --config .eslintrc.js --ext .js --ignore-path .gitignore .",
+    "pretest": "npm run eslint",
     "test": "ava",
-    "start": "nodemon -e js,json server"
+    "start": "node server"
   },
   "dependencies": {
-    "@koa/router": "8.0.1",
-    "@tadashi/hex-id": "1.1.1",
-    "@tadashi/jwt": "3.1.0",
-    "@tadashi/koa-base": "3.9.0",
-    "debug": "4.1.1",
-    "koa-bodyparser": "4.2.1"
+    "@koa/router": "10.0.0",
+    "@tadashi/koa-base": "3.16.0",
+    "debug": "4.3.1",
+    "koa-bodyparser": "4.3.0",
+    "supports-color": "7.2.0"
   },
   "devDependencies": {
-    "eslint": "6.5.1",
-    "eslint-config-xo": "0.27.1",
-    "eslint-plugin-unicorn": "12.0.1",
-    "nodemon": "1.19.3",
-    "supertest": "4.0.2",
+    "@tadashi/hex-id": "2.0.0",
+    "eslint": "7.14.0",
+    "eslint-config-xo": "0.33.1",
+    "eslint-plugin-unicorn": "23.0.0",
+    "supertest": "6.0.1",
     "hash-to-port": "1.1.0",
-    "ava": "2.4.0"
+    "ava": "3.13.0"
+  },
+  "ava": {
+    "files": [
+      "test/**/*",
+      "!test/helpers/**/*"
+    ]
   }
 }

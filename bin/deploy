@@ -8,7 +8,7 @@ DIR="$( cd -P "$( dirname "$0" )" && pwd )"
 usage() {
 	cat <<-EOF
 
-  Usage: $0 [-i] [-e <staging|production>]
+  Usage: $0 [-i] -e <staging|production>
 
   Options:
     -i   Ignore build image
@@ -25,7 +25,7 @@ cd ..
 
 CURR_FOLDER=`pwd`
 BUILD=1
-OPT="staging"
+# OPT="staging"
 
 while getopts ":ie:" o
 do
@@ -36,25 +36,23 @@ do
 	esac
 done
 
-# ENV File
-ENVFILE="${CURR_FOLDER}/.env-${OPT}"
-if test ! -e $ENVFILE; then
-	abort "Environment file not found"
+if test -z ${OPT}; then
+	abort "Missing environment"
 fi
 
-set -a
-source $ENVFILE
+# ENV File
+load_env $CURR_FOLDER $OPT
+
+if test -z ${DEPLOY_FOLDER}; then
+	abort "DEPLOY_FOLDER not found..."
+	exit 1
+fi
 
 # BUILD IMAGE and PUSH
 if test $BUILD == 1; then
 	$CURR_FOLDER/bin/image -e $OPT
 	test $? -ne 0 && abort "Image build fail" || ok "Image build done"
 fi
-
-# Deploy
-USER=docker
-SERVER=your.server.com
-DEPLOY_FOLDER="/path/api/rest"
 
 # Criando docker-compose
 COMPOSE_TEMPLATE="${CURR_FOLDER}/docker-compose.template.yml"
@@ -67,8 +65,9 @@ test $? -ne 0 && abort "Rsync fail" || ok "Rsync done"
 
 # Run
 ssh -T $USER@$SERVER <<EOF
+sudo -i
 cd $DEPLOY_FOLDER
-/usr/bin/docker stack deploy --with-registry-auth --prune --compose-file docker-compose-${OPT}.yml marsh_nimble_rd_${OPT}
+/usr/bin/docker stack deploy --with-registry-auth --prune --compose-file docker-compose-${OPT}.yml ${DOCKER_STACK_NAME}_${OPT}
 exit 0
 EOF
 
