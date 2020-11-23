@@ -25,7 +25,7 @@ function hello(ctx) {
 // POST
 function fake(ctx) {
 	const {
-		body = {}
+		body
 	} = ctx.request
 
 	// echo do post

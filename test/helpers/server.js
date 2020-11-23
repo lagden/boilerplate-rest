@@ -1,10 +1,10 @@
 'use strict'
 
-import request from 'supertest'
-import toPort from 'hash-to-port'
-import _app from '../../server/app'
+const hexId = require('@tadashi/hex-id')
+const request = require('supertest')
+const toPort = require('hash-to-port')
+const _app = require('../../server/app')
 
-const hash = (Number(String(Math.random()).split('.')[1]) + Date.now()).toString(26)
-const app = request.agent(_app.listen(toPort(hash)))
+const app = request.agent(_app.listen(toPort(hexId())))
 
-export default app
+module.exports = app

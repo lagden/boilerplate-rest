@@ -1,4 +1,4 @@
-# APP Prod ou Staging
+# APP Prod, Staging e Test
 FROM node:14.5-alpine3.12
 
 LABEL maintainer="docker@lagden.in"
@@ -16,6 +16,6 @@ ADD --chown=node:node . $BASE_APP
 
 WORKDIR $BASE_APP
 
-RUN npm ci --ignore-scripts --production
+RUN npm ci --ignore-scripts
 
 USER node

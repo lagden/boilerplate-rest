@@ -5,6 +5,7 @@
   "scripts": {
     "eslint": "eslint --config .eslintrc.js --ext .js --ignore-path .gitignore .",
     "pretest": "npm run eslint",
+    "coverage": "nyc ava",
     "test": "ava",
     "start": "node server"
   },
@@ -17,12 +18,13 @@
   },
   "devDependencies": {
     "@tadashi/hex-id": "2.0.0",
+    "ava": "3.13.0",
     "eslint": "7.14.0",
     "eslint-config-xo": "0.33.1",
     "eslint-plugin-unicorn": "23.0.0",
-    "supertest": "6.0.1",
     "hash-to-port": "1.1.0",
-    "ava": "3.13.0"
+    "nyc": "15.1.0",
+    "supertest": "6.0.1"
   },
   "ava": {
     "files": [
