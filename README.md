@@ -1,4 +1,4 @@
-# API Boilerplate
+# Boilerplate Rest
 
 [![XO code style][xo-img]][xo]
 
@@ -6,19 +6,10 @@
 [xo]:            https://github.com/sindresorhus/xo
 
 
-Boilerplate para desenvolvimento rápido de uma API REST
+Boilerplate para desenvolvimento de uma API REST
 
 
 ## Como usar
-
-Para criar a API:
-
-```shell
-npx degit lagden/api-boilerplate minha_api
-```
-
-
-## Comece
 
 Existem 2 maneiras de trabalhar:
 
@@ -26,118 +17,96 @@ Existem 2 maneiras de trabalhar:
 - [Local](#local)
 
 
-### Docker
-
+Use o `degit` para fazer o `scaffolding` do projeto.  
 Entre no diretório do projeto:
 
 ```shell
+npx degit lagden/boilerplate-rest minha_api
 cd minha_api
 ```
 
-...então faça os seguintes passos:
 
+### Docker
 
-#### Passo 1 (opcional)
-
-Cadastre a chave e crie os arquivos de usuário e senha do `registry`...
-
-**Atenção**
-
-A chave só funciona com `Docker Swarm`.  
-Quando sua API for para produção, o `secret` terá que ser criado no `Docker Host`
-
+Inicie a aplicação.
 
 ```shell
-echo 'chave secreta' | base64 | docker secret create api_rest_key -
-echo 'username' > .registry-user
-echo 'password' > .registry-passwd
+bin/start -b
 ```
 
+Sobre o parâmetro:
 
-#### Passo 2
-
-Inicie a aplicação:
-
-```shell
-bin/start -bd
-```
-
-Sobre os parâmetros:
-
- - `-b` Efetua o build da imagem (é necessário passar quando houver alteração nos pacotes)
- - `-d` Roda em background
+ - `-b` Efetua o build da imagem (é importante passar quando houver alteração no `package.json`)
 
 
-Acesse seu endpoint: [http://[::1]:31000/](http://[::1]:31000/).  
-É possível acompanhar os logs:
+Acesse o URL: [http://[::1]:5000/](http://[::1]:5000/).
 
-```shell
-bin/logs
-```
 
-Para testar sua API:
+#### Test
+
+Para executar os testes da sua API.
 
 ```shell
 bin/test -b
 ```
 
+#### Deploy (opcional)
+
+Crie os arquivos de usuário e senha do **Registry**.
+
+```shell
+echo 'username' > .registry-user
+echo 'password' > .registry-passwd
+```
+
+Sempre que executar o `bin/deploy`, também será executado o `bin/image` que faz o `build` da imagem e faz o `push` para o seu **Registry**.
+
 
 ### Local
 
-Instale as dependências...
+Instale as dependências e em seguida inicie a aplicação.
 
 ```shell
-cd minha_api
-npm i
+bin/zera
+bin/watch -e development
 ```
 
-...então inicie:
-
-```shell
-env DEBUG_PREFIX=api_rest DEBUG=api_rest:\* SECRET_KEY='chave secreta' npm start
-```
-
-Acesse seu endpoint: [http://[::1]:3000/](http://[::1]:3000/)
+Acesse o URL: [http://[::1]:5000/](http://[::1]:5000/).
 
 
-Para testar sua API:
+**Atenção!**
+
+O `bin/watch` depende do [entr](https://github.com/eradman/entr).  
+Mas é possível ajustar o para utilizar o [nodemon](https://github.com/remy/nodemon)
+
+
+#### Test
+
+Para executar os testes da sua API.
 
 ```shell
 npm test
 ```
 
 
-## cURL
+## Chamadas
 
-Chamadas de exemplo via Docker:
+Algumas chamadas de exemplo.
+
 
 ```shell
-curl 'http://[::1]:31000/'
+curl 'http://[::1]:5000/'
 ```
 
 ```shell
-curl 'http://[::1]:31000/login' \
+curl 'http://[::1]:5000/Api'
+```
+
+```shell
+curl 'http://[::1]:5000/echo' \
 -H 'content-type: application/json' \
--d '{"username": "user", "password": "passwd"}'
+-d '{"apenas": "um show"}'
 ```
-
-```shell
-curl 'http://[::1]:31000/user' \
--H 'content-type: application/json' \
--H 'authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJKb2huIn0sImp0aSI6IjVkOWExYjBkNmU1OGUxYTQ1YjQ3MTZlZSIsImF1ZCI6Imh0dHA6Ly9bOjoxXSIsImlhdCI6MTU3MDM4MDU1NywibmJmIjoxNTcwMzgwNTU3fQ.wE11wXEdCrvep61aC8sylUIyvfXDeTOLx0r_OUNxfZAq27vluRXOw4pqUtZf5eWM5Xb9OTcyA7XGbtKMX14dHw'
-```
-
-
-## Extra
-
-Se quiser utilizar uma biblioteca de autenticação JWT mais complexa, recomendo:
-
-- [koa-jwt](https://github.com/koajs/jwt)
-
-E com `koa-jwt` dá para utilizar:
-
-- [jwks-rsa](https://github.com/auth0/node-jwks-rsa)
-- [@tadashi/koa-jwt-authz](https://github.com/lagden/koa-jwt-authz)
 
 
 ### Outros middlewares
@@ -148,6 +117,7 @@ E com `koa-jwt` dá para utilizar:
 - [koa-ratelimit](https://github.com/koajs/ratelimit)
 - [koa-static](https://github.com/koajs/static)
 - ...
+
 
 ## License
 

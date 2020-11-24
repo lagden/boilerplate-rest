@@ -21,9 +21,9 @@ test('hello boilerplate', async t => {
 	t.is(hello, 'Hello boilerplate')
 })
 
-test('fake', async t => {
+test('echo', async t => {
 	const r = await app
-		.post('/fake')
+		.post('/echo')
 		.set('content-type', 'application/json')
 		.send({xxx: true})
 

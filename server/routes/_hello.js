@@ -23,7 +23,7 @@ function hello(ctx) {
 }
 
 // POST
-function fake(ctx) {
+function echo(ctx) {
 	const {
 		body
 	} = ctx.request
@@ -34,6 +34,6 @@ function fake(ctx) {
 
 router
 	.get(['/', '/:name'], hello)
-	.post('/fake', bodyparser(), fake)
+	.post('/echo', bodyparser(), echo)
 
 module.exports = router
