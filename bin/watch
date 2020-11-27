@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DIR="$( cd -P "$( dirname "$0" )" && pwd )"
 
@@ -8,11 +8,11 @@ DIR="$( cd -P "$( dirname "$0" )" && pwd )"
 usage() {
 	cat <<-EOF
 
-  Usage: $0 [-e <development|staging|production>]
+  Usage: $0 [options]
 
   Options:
-    -e   Environment
-    -h   Show usage
+    -e <development|staging|production>  Environment
+    -h                                   Show usage
 
 EOF
 exit 0
@@ -30,10 +30,9 @@ done
 # cd $DIR
 # cd ..
 
-# # Go to current directory
-cd $(pwd)
-
-CURR_FOLDER=`pwd`
+# Go to current directory
+CURR_FOLDER="$( pwd )"
+cd $CURR_FOLDER
 
 # ENV File
 if test $OPT; then
@@ -42,18 +41,23 @@ else
 	ok "Running without any env."
 fi
 
-ok "Watching folders: ${WATCH_FOLDERS}..."
-ok "Running cmd: ${WATCH_CMD}..."
+ok "Watching folders: ${WATCH_FOLDERS}"
+ok "Ignoring folders: ${WATCH_IGNORES}"
+ok "Running cmd: ${WATCH_CMD}"
 
-ENTR_FILE=$(which entr)
-ok "$ENTR_FILE"
-if test -f "${ENTR_FILE}"; then
+ENTR_FILE="$( which entr )"
+
+if test -f ${ENTR_FILE}; then
 	# while true; do
-	# 	find ${WATCH_FOLDERS} -type f | entr -rd ${WATCH_CMD}
+	# 	find "${WATCH_FOLDERS}" -type f -not -path "${WATCH_IGNORES}" | entr -nrd ${WATCH_CMD}
 	# done
-	find ${WATCH_FOLDERS} -type f | entr -rd ${WATCH_CMD}
+	if test -z ${WATCH_IGNORES}; then
+		find ${WATCH_FOLDERS} -type f | entr -nrd ${WATCH_CMD}
+	else
+		find ${WATCH_FOLDERS} -type f -not -path ${WATCH_IGNORES} | entr -nrd ${WATCH_CMD}
+	fi
 else
-	eval $WATCH_CMD
+	$($WATCH_CMD)
 fi
 
 exit 0
