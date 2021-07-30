@@ -34,12 +34,9 @@ jobs:
         run: |
           echo "nodeLinker: node-modules" >> .yarnrc.yml
 
-      - name: Install dependencies
+      - name: Install dependencies and run test
         run: yarn install
-        env:
-          CI: true
-
-      - run: npm test
+        run: npm test
         env:
           CI: true
 
