@@ -24,21 +24,18 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      # - name: Update yarn
-      #   run: yarn set version berry
-      # - name: Yarn version
-      #   run: yarn --version
-      # - name: Generate simple .yarnrc.yml
-      #   run: |
-      #     echo "nodeLinker: node-modules" >> .yarnrc.yml
-      # - name: Generate yarn file
-      #   run: yarn install
+      - name: Generate simple .yarnrc.yml
+        run: |
+          echo "nodeLinker: node-modules" >> .yarnrc.yml
+
+      - name: Update yarn
+        run: yarn set version berry
 
       - name: Log yarn version
         run: yarn --version
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable 
       
       - run: npm test
         env:
