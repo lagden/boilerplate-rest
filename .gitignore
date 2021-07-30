@@ -10,6 +10,9 @@ _cleanup
 # node
 node_modules
 
+# lock files
+*.lock
+
 # Yarn
 .yarn/*
 !.yarn/patches
