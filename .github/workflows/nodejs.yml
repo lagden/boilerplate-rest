@@ -24,35 +24,22 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      # - name: Update yarn
-      #   run: yarn set version berry
+      - name: Update yarn
+        run: yarn set version berry
 
-      # - name: Log yarn version
-      #   run: yarn --version
+      - name: Log yarn version
+        run: yarn --version
 
-      # - name: Generate simple .yarnrc.yml
-      #   run: |
-      #     echo "nodeLinker: node-modules" >> .yarnrc.yml
+      - name: Generate simple .yarnrc.yml
+        run: |
+          echo "nodeLinker: node-modules" >> .yarnrc.yml
 
-      # - name: Install dependencies
-      #   run: yarn install
+      - name: Install dependencies
+        run: yarn install
+        env:
+          CI: true
 
-      # - uses: borales/actions-yarn@v2.3.0
-      #   with:
-      #     cmd: install
-      
-      # - uses: borales/actions-yarn@v2.3.0
-      #   with:
-      #     cmd: test
-
-      - uses: actions/cache@v2
-        with:
-          path: |
-            .yarn/cache
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn install
-      - run: yarn test
-
+      - run: npm test
         env:
           CI: true
 
