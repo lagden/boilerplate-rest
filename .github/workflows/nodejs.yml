@@ -34,11 +34,13 @@ jobs:
         run: |
           echo "nodeLinker: node-modules" >> .yarnrc.yml
 
-      - name: Install dependencies and run test
+      - name: Install dependencies
         run: yarn install
-        run: npm test
         env:
           CI: true
+
+      - name: Run test
+        run: npm test
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
