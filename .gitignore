@@ -11,7 +11,7 @@ _cleanup
 node_modules
 
 # lock files
-*.lock
+# *.lock
 
 # Yarn
 .yarn/*
