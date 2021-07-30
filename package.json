@@ -17,7 +17,7 @@
   "author": "Thiago Lagden",
   "license": "MIT",
   "scripts": {
-    "eslint": "eslint --config .eslintrc.cjs --ext .js --ignore-path .gitignore .",
+    "eslint": "eslint --config .eslintrc.yml --ext .js --ignore-path .gitignore .",
     "pretest": "npm run eslint",
     "test": "c8 --reporter=text --reporter=text-summary --reporter=lcov ava",
     "dev": "run-s test start",
