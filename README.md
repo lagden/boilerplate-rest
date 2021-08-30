@@ -1,12 +1,12 @@
 # Boilerplate Rest
 
+[![Build Status][ci-img]][ci]
 [![Coverage Status][coveralls-img]][coveralls]
-[![XO code style][xo-img]][xo]
 
+[ci-img]:          https://github.com/lagden/boilerplate-rest/actions/workflows/nodejs.yml/badge.svg
+[ci]:              https://github.com/lagden/boilerplate-rest/actions/workflows/nodejs.yml
 [coveralls-img]:   https://coveralls.io/repos/github/lagden/boilerplate-rest/badge.svg?branch=master
 [coveralls]:       https://coveralls.io/github/lagden/boilerplate-rest?branch=master
-[xo-img]:          https://img.shields.io/badge/code_style-XO-5ed9c7.svg
-[xo]:              https://github.com/sindresorhus/xo
 
 
 Boilerplate para desenvolvimento de uma API REST.
