@@ -1,3 +1,4 @@
+import process from 'node:process'
 import debug from 'debug'
 
 const {DEBUG_PREFIX = 'boilerplate'} = process.env
