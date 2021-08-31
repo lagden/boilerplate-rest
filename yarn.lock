@@ -535,9 +535,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 16.7.7
-  resolution: "@types/node@npm:16.7.7"
-  checksum: 13a6aed12e667233f7dc69b53e960661f2b8321499141a4e1548567d891d71900626e03809d3799b7d72099c1f876e1e8e7dd29b7c44d61d20d63ac2e821ebce
+  version: 16.7.8
+  resolution: "@types/node@npm:16.7.8"
+  checksum: 060ea222ce8f3eb05bd86a7785ca5807503a50602dd805c5be997a5ae684fa6224c9ad8890bcc5551c05d14a8bcd735f94567691342d197f5f7f7f893ed0d46b
   languageName: node
   linkType: hard
 
@@ -944,6 +944,7 @@ __metadata:
     koa-compose: 4.1.0
     local-access: 1.1.0
     npm-run-all: 4.1.5
+    prettier: 2.3.2
   languageName: unknown
   linkType: soft
 
@@ -1503,9 +1504,9 @@ __metadata:
   linkType: hard
 
 "core-util-is@npm:~1.0.0":
-  version: 1.0.2
-  resolution: "core-util-is@npm:1.0.2"
-  checksum: 7a4c925b497a2c91421e25bf76d6d8190f0b2359a9200dbeed136e63b2931d6294d3b1893eda378883ed363cd950f44a12a401384c609839ea616befb7927dab
+  version: 1.0.3
+  resolution: "core-util-is@npm:1.0.3"
+  checksum: 9de8597363a8e9b9952491ebe18167e3b36e7707569eed0ebf14f8bba773611376466ae34575bca8cfe3c767890c859c74056084738f09d4e4a6f902b2ad7d99
   languageName: node
   linkType: hard
 
@@ -1736,9 +1737,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.3.811":
-  version: 1.3.822
-  resolution: "electron-to-chromium@npm:1.3.822"
-  checksum: ad6d5900589e76efbc60721f6edf557f1cdcf762ada92bddd004337ccb578ff116fa638d340dbaaae403a440e756d3833485a093af081584c8fec3b6063f55ed
+  version: 1.3.824
+  resolution: "electron-to-chromium@npm:1.3.824"
+  checksum: e4ba8867f82b13de0f87390d9ac23696163b826ac598e8ccf7090bc40b77c0c15b29b268866f79658cb8365e718e21112e005a431760dbbb359c3000ad61b868
   languageName: node
   linkType: hard
 
@@ -3666,8 +3667,8 @@ fsevents@~2.3.2:
   linkType: hard
 
 "minipass-fetch@npm:^1.3.2":
-  version: 1.3.4
-  resolution: "minipass-fetch@npm:1.3.4"
+  version: 1.4.1
+  resolution: "minipass-fetch@npm:1.4.1"
   dependencies:
     encoding: ^0.1.12
     minipass: ^3.1.0
@@ -3676,7 +3677,7 @@ fsevents@~2.3.2:
   dependenciesMeta:
     encoding:
       optional: true
-  checksum: 67cb59d30ba646d652a250e08833bb54463ef1fead6eea5b835a53e3f6b32410356b81948ba7be7634cbb1ab37ba497d3e1ddf203b9f0d0d7637728075f67124
+  checksum: ec93697bdb62129c4e6c0104138e681e30efef8c15d9429dd172f776f83898471bc76521b539ff913248cc2aa6d2b37b652c993504a51cc53282563640f29216
   languageName: node
   linkType: hard
 
@@ -4298,6 +4299,15 @@ fsevents@~2.3.2:
   version: 2.0.0
   resolution: "prepend-http@npm:2.0.0"
   checksum: 7694a9525405447662c1ffd352fcb41b6410c705b739b6f4e3a3e21cf5fdede8377890088e8934436b8b17ba55365a615f153960f30877bf0d0392f9e93503ea
+  languageName: node
+  linkType: hard
+
+"prettier@npm:2.3.2":
+  version: 2.3.2
+  resolution: "prettier@npm:2.3.2"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 17ce5784ac67621c292df58e2da60b2ee150c2d6aebea22a6ad9e52fcd6a5e66c349d0a8436ea3bd8ff9d778920a5f68000d7625b74f43558718a49755aa5259
   languageName: node
   linkType: hard
 
