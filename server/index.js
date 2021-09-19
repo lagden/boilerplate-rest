@@ -7,15 +7,14 @@ const {
 	PORT = 5000,
 	PORT_PUBLISHED = 5000,
 	HOSTNAME = '0.0.0.0',
+	HOSTNAME_CUSTOM,
 	VERSION = 'dev',
 } = process.env
-
-const HOSTNAME_CUSTOM = process.env?.HOSTNAME_CUSTOM ?? HOSTNAME
 
 const {
 	local,
 	network,
-} = la({port: PORT_PUBLISHED, hostname: HOSTNAME_CUSTOM})
+} = la({port: PORT_PUBLISHED, hostname: HOSTNAME_CUSTOM ?? HOSTNAME})
 
 app.listen(PORT, () => {
 	debug.info('Server listening')

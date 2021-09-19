@@ -1,6 +1,6 @@
-import path from 'node:path'
 import {fileURLToPath} from 'node:url'
 import {readdirSync} from 'node:fs'
+import path from 'node:path'
 import compose from 'koa-compose'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
