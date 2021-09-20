@@ -1,7 +1,15 @@
-tabWidth: 2
+arrowParens: avoid
+bracketSpacing: false
+# endOfLine: lf
+# htmlWhitespaceSensitivity: css
+insertPragma: true
+# parser: babel
+printWidth: 120
+proseWrap: never
+quoteProps: as-needed
+requirePragma: true
 semi: false
 singleQuote: true
-useTabs: true
-bracketSpacing: false
+tabWidth: 2
 trailingComma: all
-arrowParens: avoid
+useTabs: true
