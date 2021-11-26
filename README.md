@@ -32,7 +32,7 @@ Instale o [Yarn 2 aka Berry](https://yarnpkg.com/getting-started/install).
 
 ```
 npm install -g yarn
-yarn set version berry
+yarn set version stable
 ```
 
 ---
