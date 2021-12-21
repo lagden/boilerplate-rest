@@ -28,7 +28,7 @@ Boilerplate para desenvolvimento de uma API REST.
 
 ⚠️ **Importante**
 
-Instale o [Yarn 2 aka Berry](https://yarnpkg.com/getting-started/install).
+Instale o [Yarn](https://yarnpkg.com/getting-started/install).
 
 ```
 npm install -g yarn
@@ -52,7 +52,7 @@ Existem algumas dependências.
 yarn dlx degit lagden/boilerplate-rest#master projeto
 cd projeto
 yarn dlx degit lagden/boilerplate-bin/files#main bin
-yarn dlx degit lagden/boilerplate-eslint/files/backend/.eslintrc.yml#main ./.eslintrc.yml --force
+yarn dlx degit lagden/boilerplate-eslint/files/backend/.eslintrc.yml#main ./ --force
 yarn dlx degit lagden/boilerplate-envs/files#main ./ --force
 yarn dlx degit lagden/boilerplate-docker-nodejs/files#main ./ --force
 ```
@@ -63,18 +63,18 @@ yarn dlx degit lagden/boilerplate-docker-nodejs/files#main ./ --force
 Após finalizado o `scaffolding` do projeto, instale os pacotes.
 
 ```shell
-bin/node/zera
+bin/node/zera -y
 ```
 
-Feito isso, o projeto está pronto para rodar.
+Feito isso, o projeto está pronto para funcionar.
 
-Se for rodar **local**, utilize:
+Para rodar **local**, utilize:
 
 ```shell
 bin/local/start
 ```
 
-Se for rodar via **docker**, utilize:
+E via **docker**, utilize:
 
 ```shell
 bin/docker/start
@@ -83,7 +83,7 @@ bin/docker/start
 ⚠️ **Ressalvas**
 
 No **docker**, caso seja instalado um novo pacote, é necessário fazer o `build` da imagem novamente.  
-Pare o container (`bin/docker/stop` ou `command + c` ou `control + c`) e rode novamente passando o parâmetro `-b`:
+Pare o container (`bin/docker/stop` ou `control + c`) e rode novamente passando o parâmetro `-b`:
 
 ```shell
 bin/docker/start -b
@@ -101,7 +101,7 @@ Rodando via **docker** isso ocorre por padrão, mas **local** é necessário faz
 Se estiver rodando em **BSD** ou **Mac OS** ou **Linux**, basta instalar o [entr](https://github.com/eradman/entr) e executar:
 
 ```shell
-bin/local/watch
+bin/local/start -w
 ```
 
 
@@ -109,18 +109,10 @@ bin/local/watch
 
 Como o [entr](https://github.com/eradman/entr) não roda no **Windows**, existe uma solução alternativa.
 
-Crie o arquivo `.env-local` na raiz do projeto e insira:
+Utilize o arquivo `.env-local` na raiz do projeto e insira o código abaixo:
 
 ```
 WATCH_LOCAL_CMD="yarn dlx nodemon -e js,json --watch server --exec npm start"
-```
-
-⚠️ **Ressalvas**
-
-Pode instalar global também e configurar da seguinte forma:
-
-```
-WATCH_LOCAL_CMD="nodemon -e js,json --watch server --exec npm start"
 ```
 
 ---
@@ -128,7 +120,7 @@ WATCH_LOCAL_CMD="nodemon -e js,json --watch server --exec npm start"
 Então, execute o comando:
 
 ```shell
-bin/local/watch
+bin/local/start -w
 ```
 
 
@@ -145,13 +137,13 @@ bin/local/test
 **docker:**
 
 ```shell
-bin/docker/test -s app
+bin/docker/test
 ```
 
 
 ## Imagem
 
-Crie os arquivos de usuário e senha do **registry** que serão utilizados.
+Crie os arquivos de usuário e senha do **registry** que serão utilizados para fazer o `push` da imagem.
 
 ```shell
 echo 'username' > .registry-user
@@ -164,10 +156,6 @@ E para fazer o `push` da imagem de sua aplicação, execute:
 ```shell
 bin/docker/image -e production
 ```
-
-⚠️ **Ressalvas**
-
-Se o parâmetro `-e` não for definido, o padrão é `staging`.
 
 
 ## Deploy
