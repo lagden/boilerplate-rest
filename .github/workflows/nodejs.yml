@@ -2,10 +2,10 @@ name: Node.js CI
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build:
@@ -17,20 +17,18 @@ jobs:
         node-version: [16.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Update yarn
-        run: yarn set version stable
+      # - name: Update yarn
+      #   run: yarn set version stable
 
       - name: Install dependencies
         run: yarn install
-        env:
-          CI: true
 
       - name: Run test
         run: npm test
