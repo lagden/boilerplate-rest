@@ -5,8 +5,8 @@
 
 [ci-img]:          https://github.com/lagden/boilerplate-rest/actions/workflows/nodejs.yml/badge.svg
 [ci]:              https://github.com/lagden/boilerplate-rest/actions/workflows/nodejs.yml
-[coveralls-img]:   https://coveralls.io/repos/github/lagden/boilerplate-rest/badge.svg?branch=master
-[coveralls]:       https://coveralls.io/github/lagden/boilerplate-rest?branch=master
+[coveralls-img]:   https://coveralls.io/repos/github/lagden/boilerplate-rest/badge.svg?branch=main
+[coveralls]:       https://coveralls.io/github/lagden/boilerplate-rest?branch=main
 
 
 Boilerplate para desenvolvimento de uma API REST.
