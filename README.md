@@ -51,8 +51,8 @@ Existem algumas dependências.
 ```shell
 yarn dlx degit lagden/boilerplate-rest#main projeto
 cd projeto
-yarn dlx degit lagden/boilerplate-bin/files#main bin
-yarn dlx degit lagden/boilerplate-eslint/files/backend/.eslintrc.yml#main ./ --force
+yarn dlx degit lagden/boilerplate-bin/files#main bin --force
+yarn dlx degit lagden/boilerplate-eslint/files/backend/.eslintrc.yml#main ./.eslintrc.yml --force
 yarn dlx degit lagden/boilerplate-envs/files#main ./ --force
 yarn dlx degit lagden/boilerplate-docker-nodejs/files#main ./ --force
 ```
