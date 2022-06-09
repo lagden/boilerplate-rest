@@ -1,12 +1,13 @@
-import {fileURLToPath} from 'node:url'
+import {URL} from 'node:url'
 import {readdirSync} from 'node:fs'
-import path from 'node:path'
 import compose from 'koa-compose'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const __dirname = new URL('.', import.meta.url)
 
 const pattern = /^_[\w-_]+\.js/
-const files = readdirSync(__dirname).filter(f => pattern.test(f)).map(f => path.join(__dirname, f))
+const files = readdirSync(__dirname)
+	.filter(f => pattern.test(f))
+	.map(f => new URL(f, __dirname).href)
 
 const middleware = []
 

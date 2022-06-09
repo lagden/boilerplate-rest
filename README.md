@@ -31,7 +31,7 @@ Boilerplate para desenvolvimento de uma API REST.
 Instale o [Yarn](https://yarnpkg.com/getting-started/install).
 
 ```
-npm install -g yarn
+npm i --location=global yarn
 yarn set version stable
 ```
 
@@ -49,7 +49,7 @@ Existem algumas dependências.
 **Exemplo:**
 
 ```shell
-yarn dlx degit lagden/boilerplate-rest#master projeto
+yarn dlx degit lagden/boilerplate-rest#main projeto
 cd projeto
 yarn dlx degit lagden/boilerplate-bin/files#main bin
 yarn dlx degit lagden/boilerplate-eslint/files/backend/.eslintrc.yml#main ./ --force
