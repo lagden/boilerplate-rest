@@ -6,12 +6,10 @@ resource
 
 # Boilerplate
 _cleanup
+_init
 
 # node
 node_modules
-
-# lock files
-# *.lock
 
 # Yarn
 .yarn/*

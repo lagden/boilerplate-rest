@@ -1,7 +1,0 @@
-#!/bin/bash
-
-yarn dlx degit lagden/boilerplate-bin/files#main bin
-yarn dlx degit lagden/boilerplate-eslint/files/backend/.eslintrc.yml#main ./ --force
-yarn dlx degit lagden/boilerplate-envs/files#main ./ --force
-
-exit 0
