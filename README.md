@@ -32,12 +32,11 @@ Instale o [Yarn](https://yarnpkg.com/getting-started/install).
 
 ```
 npm i --location=global yarn
-yarn set version stable
 ```
 
 ---
 
-Use o [degit](https://github.com/Rich-Harris/degit) para fazer o `scaffolding` do projeto.
+Use o [degit](https://github.com/tiged/tiged) para fazer o `scaffolding` do projeto.
 
 Existem algumas dependências.
 
@@ -49,12 +48,12 @@ Existem algumas dependências.
 **Exemplo:**
 
 ```shell
-yarn dlx degit lagden/boilerplate-rest#main projeto
+npx tiged lagden/boilerplate-rest#main projeto
 cd projeto
-yarn dlx degit lagden/boilerplate-bin/files#main bin --force
-yarn dlx degit lagden/boilerplate-eslint/files/backend/.eslintrc.yml#main ./.eslintrc.yml --force
-yarn dlx degit lagden/boilerplate-envs/files#main ./ --force
-yarn dlx degit lagden/boilerplate-docker-nodejs/files#main ./ --force
+npx tiged lagden/boilerplate-bin/files#main bin --force
+npx tiged lagden/boilerplate-eslint/files/backend/.eslintrc.yml#main .eslintrc.yml --force
+npx tiged lagden/boilerplate-envs/files#main . --force
+npx tiged lagden/boilerplate-docker-nodejs/files#main . --force
 ```
 
 
