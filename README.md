@@ -26,17 +26,7 @@ Boilerplate para desenvolvimento de uma API REST.
 
 ## Instalação
 
-⚠️ **Importante**
-
-Instale o [Yarn](https://yarnpkg.com/getting-started/install).
-
-```
-npm i --location=global yarn
-```
-
----
-
-Use o [degit](https://github.com/tiged/tiged) para fazer o `scaffolding` do projeto.
+Use o [tiged](https://github.com/tiged/tiged) para fazer o `scaffolding` do projeto.
 
 Existem algumas dependências.
 
@@ -51,7 +41,7 @@ Existem algumas dependências.
 npx tiged lagden/boilerplate-rest#main projeto
 cd projeto
 npx tiged lagden/boilerplate-bin/files#main bin --force
-npx tiged lagden/boilerplate-eslint/files/backendl#main . --force
+npx tiged lagden/boilerplate-eslint/files/backend#main . --force
 npx tiged lagden/boilerplate-envs/files#main . --force
 npx tiged lagden/boilerplate-docker-nodejs/files#main . --force
 ```
@@ -59,10 +49,11 @@ npx tiged lagden/boilerplate-docker-nodejs/files#main . --force
 
 ## Como utilizar
 
-Após finalizado o `scaffolding` do projeto, instale os pacotes.
+Após finalizado o `scaffolding` do projeto, atualize e instale os pacotes.
 
 ```shell
-bin/node/zera -y
+bin/node/pkg.js
+bin/node/zera
 ```
 
 Feito isso, o projeto está pronto para funcionar.
