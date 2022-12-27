@@ -49,11 +49,11 @@ npx tiged lagden/boilerplate-docker-nodejs/files#main . --force
 
 ## Como utilizar
 
-Após finalizado o `scaffolding` do projeto, atualize e instale os pacotes.
+Após finalizado o `scaffolding` do projeto, instale os pacotes.
 
 ```shell
 bin/node/pkg.js
-bin/node/zera
+bin/node/zera -m npm
 ```
 
 Feito isso, o projeto está pronto para funcionar.
