@@ -9,7 +9,7 @@
 [coveralls]:       https://coveralls.io/github/lagden/boilerplate-rest?branch=main
 
 
-Boilerplate para desenvolvimento de uma API REST.
+Boilerplate para desenvolvimento de uma aplicação.
 
 - [Instalação](#instalação)
 - [Como utilizar](#como-utilizar)
