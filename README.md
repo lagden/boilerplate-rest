@@ -14,8 +14,6 @@ Boilerplate para desenvolvimento de uma API REST.
 - [Instalação](#instalação)
 - [Como utilizar](#como-utilizar)
     - [watch](#watch)
-        - [entr](#entr)
-        - [nodemon](#nodemon)
     - [teste](#teste)
 - [Imagem](#imagem)
 - [Deploy](#deploy)
@@ -26,25 +24,20 @@ Boilerplate para desenvolvimento de uma API REST.
 
 ## Instalação
 
-Use o [tiged](https://github.com/tiged/tiged) para fazer o `scaffolding` do projeto.
+Utilize `@tadashi/boilerplate-create` para iniciar o projeto.
 
-Existem algumas dependências.
-
-- [bin](https://github.com/lagden/boilerplate-bin)
-- [envs](https://github.com/lagden/boilerplate-envs)
-- [docker](https://github.com/lagden/boilerplate-docker-nodejs) (opcional)
-
-
-**Exemplo:**
-
-```shell
-npx tiged lagden/boilerplate-rest#main projeto
-cd projeto
-npx tiged lagden/boilerplate-bin/files#main bin --force
-npx tiged lagden/boilerplate-eslint/files/backend#main . --force
-npx tiged lagden/boilerplate-envs/files#main .env --force
-npx tiged lagden/boilerplate-docker-nodejs/files#main . --force
 ```
+npm i -g @tadashi/boilerplate-create
+boilerplate-create
+```
+
+ou
+
+```
+npx --yes @tadashi/boilerplate-create
+```
+
+E siga as instruções do prompt.
 
 
 ## Como utilizar
@@ -84,30 +77,6 @@ bin/docker/start -b
 
 O **watch** reinicia a aplicação caso ocorra alguma alteração.  
 Rodando via **docker** isso ocorre por padrão, mas **local** é necessário fazer algumas instalações e configurações.
-
-
-#### entr
-
-Se estiver rodando em **BSD** ou **Mac OS** ou **Linux**, basta instalar o [entr](https://github.com/eradman/entr) e executar:
-
-```shell
-bin/local/start -w
-```
-
-
-#### nodemon
-
-Como o [entr](https://github.com/eradman/entr) não roda no **Windows**, existe uma solução alternativa.
-
-Utilize o arquivo `.env-local` na raiz do projeto e insira o código abaixo:
-
-```
-WATCH_LOCAL_CMD="yarn dlx nodemon -e js,json --watch server --exec npm start"
-```
-
----
-
-Então, execute o comando:
 
 ```shell
 bin/local/start -w
@@ -173,15 +142,15 @@ bin/docker/deploy -e production
 Chamada de exemplo da API via **curl**.
 
 ```shell
-curl 'http://[::1]:5000/'
+curl 'http://127.0.0.1:5001/'
 ```
 
 ```shell
-curl 'http://[::1]:5000/API'
+curl 'http://127.0.0.1:5001/API'
 ```
 
 ```shell
-curl 'http://[::1]:5000/echo' \
+curl 'http://127.0.0.1:5001/echo' \
 -H 'content-type: application/json' \
 -d '{"apenas": "um show"}'
 ```
@@ -196,6 +165,11 @@ Sugestão de outros **middlewares** para serem utilizados no projeto:
 - [koa-ctx-cache-control](https://github.com/koajs/ctx-cache-control)
 - [koa-ratelimit](https://github.com/koajs/ratelimit)
 - [koa-static](https://github.com/koajs/static)
+
+
+## Donate ❤️
+
+- BTC: bc1q7famhuj5f25n6qvlm3sssnymk2qpxrfwpyq7g4
 
 
 ## License
