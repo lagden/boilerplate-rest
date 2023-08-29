@@ -46,7 +46,7 @@ Após finalizado o `scaffolding` do projeto, instale os pacotes.
 
 ```shell
 bin/node/pkg.js
-bin/node/zera -m npm
+bin/node/zera
 ```
 
 Feito isso, o projeto está pronto para funcionar.
@@ -79,7 +79,7 @@ O **watch** reinicia a aplicação caso ocorra alguma alteração.
 Rodando via **docker** isso ocorre por padrão, mas **local** é necessário fazer algumas instalações e configurações.
 
 ```shell
-bin/local/start -w
+bin/local/start
 ```
 
 

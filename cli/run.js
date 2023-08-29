@@ -1,22 +1,23 @@
+#!/usr/bin/env node
+
+import '../server/reset.js'
 import process from 'node:process'
 import la from '@tadashi/local-access'
-import app from './app.js'
-import * as debug from './lib/debug.js'
+import * as debug from '@tadashi/debug'
+import app from '../server/app.js'
 
 const {
-	PORT = 5000,
-	PORT_PUBLISHED = 5000,
-	HOSTNAME = '0.0.0.0',
-	HOSTNAME_CUSTOM,
+	PORT: port = 5001,
+	HOSTNAME_CUSTOM: hostname = '0.0.0.0',
 	VERSION = 'dev',
 } = process.env
 
 const {
 	local,
 	network,
-} = la({port: PORT_PUBLISHED, hostname: HOSTNAME_CUSTOM ?? HOSTNAME})
+} = la({port, hostname})
 
-app.listen(PORT, () => {
+app.listen(port, () => {
 	debug.info('Server listening')
 	debug.info('----------------')
 	debug.info(`Local:    ${local}`)

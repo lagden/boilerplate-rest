@@ -1,21 +1,21 @@
 import bodyparser from 'koa-bodyparser'
 import Router from '@koa/router'
-import * as debug from '../lib/debug.js'
+import * as debug from '@tadashi/debug'
 
 const router = new Router()
 
 // GET
-function hello(ctx) {
+function hey(ctx) {
 	const {
-		name = 'World',
+		name = 'joe',
 	} = ctx.params
 
 	// Debug de exemplo
-	debug.log('hello | name', name)
+	debug.info('hey | name', name)
 
 	ctx.body = {
 		data: {
-			hello: `Hello ${name}`,
+			message: `Hey ${name}`,
 		},
 	}
 }
@@ -31,7 +31,7 @@ function echo(ctx) {
 }
 
 router
-	.get(['/', '/:name'], hello)
+	.get(['/', '/:name'], hey)
 	.post('/echo', bodyparser(), echo)
 
 export default router

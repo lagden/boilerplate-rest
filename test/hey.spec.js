@@ -6,7 +6,7 @@ test.before(async t => {
 	t.context.baseUrl = await server()
 })
 
-test('hello', async t => {
+test('hey', async t => {
 	const response = await got.get(`${t.context.baseUrl}/`, {
 		throwHttpErrors: false,
 		responseType: 'json',
@@ -16,7 +16,7 @@ test('hello', async t => {
 	t.snapshot(response.body)
 })
 
-test('hello boilerplate', async t => {
+test('hey boilerplate', async t => {
 	const response = await got.get(`${t.context.baseUrl}/boilerplate`, {
 		throwHttpErrors: false,
 		responseType: 'json',
@@ -34,5 +34,16 @@ test('echo json', async t => {
 	})
 
 	t.is(response.statusCode, 200)
+	t.snapshot(response.body)
+})
+
+test('Method Not Allowed', async t => {
+	const response = await got.post(`${t.context.baseUrl}/notAllowed`, {
+		throwHttpErrors: false,
+		responseType: 'json',
+		json: {xxx: true},
+	})
+
+	t.is(response.statusCode, 405)
 	t.snapshot(response.body)
 })
