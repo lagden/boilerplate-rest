@@ -6,9 +6,7 @@ const router = new Router()
 
 // GET
 function hey(ctx) {
-	const {
-		name = 'joe',
-	} = ctx.params
+	const {name = 'Joe'} = ctx.params
 
 	// Debug de exemplo
 	debug.info('hey | name', name)
@@ -22,14 +20,13 @@ function hey(ctx) {
 
 // POST
 function echo(ctx) {
-	const {
-		body,
-	} = ctx.request
+	const {body} = ctx.request
 
 	// echo do post
 	ctx.body = body
 }
 
+// prettier-ignore
 router
 	.get(['/', '/:name'], hey)
 	.post('/echo', bodyparser(), echo)

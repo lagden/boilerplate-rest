@@ -1,10 +1,6 @@
 .conf/local.sh
+.vite
 .registry-*
-docker-compose-*.yml
-
-# Boilerplate
-_cleanup
-_init
 
 # node
 node_modules
@@ -17,4 +13,6 @@ logs
 # Coverage
 coverage/**
 !coverage/lcov.info
-!coverage/cobertura-coverage.xml
+
+_init
+_cleanup
