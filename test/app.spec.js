@@ -5,7 +5,7 @@ import assert from 'node:assert/strict'
 import got from 'got'
 import run from './helper/server.js'
 
-test('token', async t => {
+test('app', async t => {
 	const {baseUrl, server} = run()
 
 	t.after(async () => {
