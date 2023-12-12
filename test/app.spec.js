@@ -1,18 +1,18 @@
 import {URLSearchParams} from 'node:url'
 import {promisify} from 'node:util'
-import {test} from 'node:test'
+import {after, describe, it} from 'node:test'
 import assert from 'node:assert/strict'
 import got from 'got'
 import run from './helper/server.js'
 
-test('app', async t => {
+describe('app', () => {
 	const {baseUrl, server} = run()
 
-	t.after(async () => {
+	after(async () => {
 		await promisify(server.close.bind(server))()
 	})
 
-	await t.test('hey', async () => {
+	it('hey', async () => {
 		const r = await got.get(baseUrl, {
 			throwHttpErrors: false,
 			responseType: 'json',
@@ -22,7 +22,7 @@ test('app', async t => {
 		assert.equal(r.body.data.message, 'Hey Joe')
 	})
 
-	await t.test('hey boilerplate', async () => {
+	it('hey boilerplate', async () => {
 		const r = await got.get(`${baseUrl}/boilerplate`, {
 			throwHttpErrors: false,
 			responseType: 'json',
@@ -32,7 +32,7 @@ test('app', async t => {
 		assert.equal(r.body.data.message, 'Hey boilerplate')
 	})
 
-	await t.test('echo', async () => {
+	it('echo', async () => {
 		const searchParams = new URLSearchParams([['source', 'boilerplate']])
 		const r = await got.post(`${baseUrl}/echo`, {
 			throwHttpErrors: false,
@@ -45,7 +45,7 @@ test('app', async t => {
 		assert.equal(r.body.xxx, true)
 	})
 
-	await t.test('error', async () => {
+	it('error', async () => {
 		const r = await got.post(`${baseUrl}/notAllowed`, {
 			throwHttpErrors: false,
 			responseType: 'json',
