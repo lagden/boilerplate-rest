@@ -1,58 +1,68 @@
-import {URLSearchParams} from 'node:url'
+import '../cli/reset.js'
+
+import {URL} from 'node:url'
 import {promisify} from 'node:util'
+import {createServer} from 'node:http'
 import {after, describe, it} from 'node:test'
 import assert from 'node:assert/strict'
-import got from 'got'
-import run from './helper/server.js'
+import listen from 'test-listen'
+import app from '../server/app.js'
 
-describe('app', () => {
-	const {baseUrl, server} = run()
+const _options = {
+	redirect: 'follow',
+	method: 'GET',
+}
+
+describe('app', async () => {
+	let server = createServer(app.callback())
+	let prefixUrl = await listen(server)
 
 	after(async () => {
 		await promisify(server.close.bind(server))()
 	})
 
 	it('hey', async () => {
-		const r = await got.get(baseUrl, {
-			throwHttpErrors: false,
-			responseType: 'json',
-		})
+		const r = await globalThis.fetch(prefixUrl, _options)
+		const d = await r.json()
 
-		assert.equal(r.statusCode, 200)
-		assert.equal(r.body.data.message, 'Hey Joe')
+		assert.equal(r.status, 200)
+		assert.equal(d.data.message, 'Hey Joe')
 	})
 
 	it('hey boilerplate', async () => {
-		const r = await got.get(`${baseUrl}/boilerplate`, {
-			throwHttpErrors: false,
-			responseType: 'json',
-		})
+		const r = await globalThis.fetch(`${prefixUrl}/boilerplate`, _options)
+		const d = await r.json()
 
-		assert.equal(r.statusCode, 200)
-		assert.equal(r.body.data.message, 'Hey boilerplate')
+		assert.equal(r.status, 200)
+		assert.equal(d.data.message, 'Hey boilerplate')
 	})
 
 	it('echo', async () => {
-		const searchParams = new URLSearchParams([['source', 'boilerplate']])
-		const r = await got.post(`${baseUrl}/echo`, {
-			throwHttpErrors: false,
-			responseType: 'json',
-			searchParams,
-			json: {xxx: true},
-		})
+		const url = new URL(`${prefixUrl}/echo`)
+		url.searchParams.set('source', 'boilerplate')
 
-		assert.equal(r.statusCode, 200)
-		assert.equal(r.body.xxx, true)
+		const r = await globalThis.fetch(url, {
+			..._options,
+			method: 'POST',
+			headers: new Headers([['Content-Type', 'application/json']]),
+			body: JSON.stringify({xxx: true}),
+		})
+		const d = await r.json()
+
+		assert.equal(r.status, 200)
+		assert.equal(d.xxx, true)
 	})
 
 	it('error', async () => {
-		const r = await got.post(`${baseUrl}/notAllowed`, {
-			throwHttpErrors: false,
-			responseType: 'json',
-			json: {xxx: true},
+		const r = await globalThis.fetch(`${prefixUrl}/notAllowed`, {
+			..._options,
+			method: 'POST',
+			headers: new Headers([['Content-Type', 'application/json']]),
+			body: JSON.stringify({xxx: true}),
 		})
+		const d = await r.json()
 
-		assert.equal(r.statusCode, 405)
-		assert.equal(r.body.message, 'Method Not Allowed')
+		assert.equal(r.status, 405)
+		assert.equal(d.message, 'Method Not Allowed')
 	})
 })

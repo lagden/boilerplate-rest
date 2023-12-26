@@ -27,9 +27,10 @@ const app = base({
 app
 	.use(routes)
 	.on('error', error => {
-		debug.error(error)
+		debug.error('app', error.message)
 		/* c8 ignore start */
 		if (error?.log) {
+			debug.error('app | log', error.log)
 			ee.emit('logger', error.log)
 		}
 		/* c8 ignore stop */

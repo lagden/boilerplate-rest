@@ -1,10 +1,33 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="95" lines-covered="95" line-rate="1" branches-valid="11" branches-covered="11" branch-rate="1" timestamp="1702387312178" complexity="0" version="0.1">
+<coverage lines-valid="108" lines-covered="108" line-rate="1" branches-valid="12" branches-covered="12" branch-rate="1" timestamp="1703626171095" complexity="0" version="0.1">
   <sources>
     <source>/Users/lagden/_dev/old/htdocs/lab/boilerplate/rest</source>
   </sources>
   <packages>
+    <package name="cli" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="reset.js" filename="cli/reset.js" line-rate="1" branch-rate="1">
+          <methods>
+          </methods>
+          <lines>
+            <line number="1" hits="1" branch="true" condition-coverage="100% (1/1)"/>
+            <line number="2" hits="1" branch="false"/>
+            <line number="3" hits="1" branch="false"/>
+            <line number="4" hits="1" branch="false"/>
+            <line number="5" hits="1" branch="false"/>
+            <line number="6" hits="1" branch="false"/>
+            <line number="7" hits="1" branch="false"/>
+            <line number="8" hits="1" branch="false"/>
+            <line number="9" hits="1" branch="false"/>
+            <line number="10" hits="1" branch="false"/>
+            <line number="11" hits="1" branch="false"/>
+            <line number="12" hits="1" branch="false"/>
+            <line number="13" hits="1" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
     <package name="server" line-rate="1" branch-rate="1">
       <classes>
         <class name="app.js" filename="server/app.js" line-rate="1" branch-rate="1">
