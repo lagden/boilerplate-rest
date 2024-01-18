@@ -1,6 +1,5 @@
 # Dir
 .conf
-.github
 .vite
 coverage/**
 dist
