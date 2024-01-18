@@ -7,7 +7,8 @@ const {
 	GITLAB_ENVIRONMENT_NAME,
 } = process.env
 
-/* c8 ignore next */
+/* c8 ignore start */
 process.env.APP_ENV = APP_ENV ?? GITLAB_ENVIRONMENT_NAME ?? 'production'
+/* c8 ignore stop */
 
 debug.info('reset.js | process.env', process.env)

@@ -1,15 +1,23 @@
-*.css
-.*
+# Dir
+.conf
+.github
+.vite
 bin
-build
 coverage
 dist
+logs
 node_modules
-package
-# template.js
-vite.config.js.timestamp-*
+resource
+test/snapshots
 
-*.json
-*.yaml
-*.yml
-*.md
+# File
+*.css
+*.html
+*-lock.*
+*.lock
+*.log
+*.log*
+.registry-*
+_cleanup
+_init
+vite.config.js.timestamp-*

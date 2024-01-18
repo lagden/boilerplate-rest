@@ -3,14 +3,14 @@ variables:
   HELM_RELEASE_NAME: rest
 
 include:
-  - project: "inovacao/devops/template-cicd"
-    file: "sonar-js.yaml"
-  - project: "inovacao/devops/template-cicd"
-    file: "test-nodejs.yaml"
-  - project: "inovacao/devops/template-cicd"
-    file: "build-nodejs.yaml"
-  - project: "inovacao/devops/template-cicd"
-    file: "deploy.yaml"
+  - project: 'inovacao/devops/template-cicd'
+    file: 'sonar-js.yaml'
+  - project: 'inovacao/devops/template-cicd'
+    file: 'test-nodejs.yaml'
+  - project: 'inovacao/devops/template-cicd'
+    file: 'build-nodejs.yaml'
+  - project: 'inovacao/devops/template-cicd'
+    file: 'deploy.yaml'
 
 test:
   extends: .test

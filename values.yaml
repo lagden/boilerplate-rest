@@ -9,30 +9,30 @@ resources:
 
 ingress:
   enabled: true
-  domain: "boilerplate.io"
-  host: "rest"
-  path: "/"
+  domain: 'boilerplate.io'
+  host: 'rest'
+  path: '/'
   annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "15m"
+    nginx.ingress.kubernetes.io/proxy-body-size: '15m'
 
 autoscaling:
   enabled: true
   minReplicas: 1
-  maxReplicas: 20
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 85
   targetMemoryUtilizationPercentage: 85
 
 extraEnv:
   # General
   - name: APP_NS
-    value: "rest"
+    value: 'rest'
   - name: NODE_ENV
-    value: "production"
+    value: 'production'
   - name: TZ
-    value: "America/Sao_Paulo"
+    value: 'America/Sao_Paulo'
 
   # Debug
   - name: DEBUG_PREFIX
-    value: "rest"
+    value: 'rest'
   - name: DEBUG
-    value: "rest:*"
+    value: 'rest:*'

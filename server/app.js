@@ -1,7 +1,7 @@
 import process from 'node:process'
-import base from '@tadashi/koa-base'
-import ee from '@tadashi/ee'
 import * as debug from '@tadashi/debug'
+import ee from '@tadashi/ee'
+import base from '@tadashi/koa-base'
 import routes from './routes/routes.js'
 
 // prettier-ignore

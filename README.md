@@ -3,24 +3,22 @@
 [![Build Status][ci-img]][ci]
 [![Coverage Status][coveralls-img]][coveralls]
 
-[ci-img]:          https://github.com/lagden/boilerplate-rest/actions/workflows/nodejs.yml/badge.svg
-[ci]:              https://github.com/lagden/boilerplate-rest/actions/workflows/nodejs.yml
-[coveralls-img]:   https://coveralls.io/repos/github/lagden/boilerplate-rest/badge.svg?branch=main
-[coveralls]:       https://coveralls.io/github/lagden/boilerplate-rest?branch=main
-
+[ci-img]: https://github.com/lagden/boilerplate-rest/actions/workflows/nodejs.yml/badge.svg
+[ci]: https://github.com/lagden/boilerplate-rest/actions/workflows/nodejs.yml
+[coveralls-img]: https://coveralls.io/repos/github/lagden/boilerplate-rest/badge.svg?branch=main
+[coveralls]: https://coveralls.io/github/lagden/boilerplate-rest?branch=main
 
 Boilerplate para desenvolvimento de uma aplicação.
 
 - [Instalação](#instalação)
 - [Como utilizar](#como-utilizar)
-    - [watch](#watch)
-    - [teste](#teste)
+  - [watch](#watch)
+  - [teste](#teste)
 - [Imagem](#imagem)
 - [Deploy](#deploy)
 - [Exemplo](#exemplo)
 - [Middlewares](#middlewares)
 - [License](#license)
-
 
 ## Instalação
 
@@ -38,7 +36,6 @@ npx --yes @tadashi/boilerplate-create
 ```
 
 E siga as instruções do prompt.
-
 
 ## Como utilizar
 
@@ -72,7 +69,6 @@ Pare o container (`bin/docker/stop` ou `control + c`) e rode novamente passando 
 bin/docker/start -b
 ```
 
-
 ### watch
 
 O **watch** reinicia a aplicação caso ocorra alguma alteração.  
@@ -81,7 +77,6 @@ Rodando via **docker** isso ocorre por padrão, mas **local** é necessário faz
 ```shell
 bin/local/start
 ```
-
 
 ### teste
 
@@ -99,7 +94,6 @@ bin/local/test
 bin/docker/test
 ```
 
-
 ## Imagem
 
 Crie os arquivos de usuário e senha do **registry** que serão utilizados para fazer o `push` da imagem.
@@ -115,7 +109,6 @@ E para fazer o `push` da imagem de sua aplicação, execute:
 ```shell
 bin/docker/image -e production
 ```
-
 
 ## Deploy
 
@@ -136,7 +129,6 @@ O fluxo do sistema de **deploy** é simples:
 bin/docker/deploy -e production
 ```
 
-
 ## Exemplo
 
 Chamada de exemplo da API via **curl**.
@@ -155,7 +147,6 @@ curl 'http://127.0.0.1:5001/echo' \
 -d '{"apenas": "um show"}'
 ```
 
-
 ## Middlewares
 
 Sugestão de outros **middlewares** para serem utilizados no projeto:
@@ -166,11 +157,9 @@ Sugestão de outros **middlewares** para serem utilizados no projeto:
 - [koa-ratelimit](https://github.com/koajs/ratelimit)
 - [koa-static](https://github.com/koajs/static)
 
-
 ## Donate ❤️
 
 - BTC: bc1q7famhuj5f25n6qvlm3sssnymk2qpxrfwpyq7g4
-
 
 ## License
 

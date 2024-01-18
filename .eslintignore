@@ -3,7 +3,7 @@
 .github
 .vite
 bin
-coverage/**
+coverage
 dist
 logs
 node_modules
@@ -14,11 +14,7 @@ resource
 *.lock
 *.log
 *.log*
-.conf/local.sh
 .registry-*
 _cleanup
 _init
 vite.config.js.timestamp-*
-
-# Keep
-!coverage/lcov.info
