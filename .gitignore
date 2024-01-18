@@ -2,7 +2,6 @@
 .conf
 .github
 .vite
-bin
 coverage/**
 dist
 logs
