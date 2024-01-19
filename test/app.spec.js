@@ -1,12 +1,9 @@
 await import('../cli/reset.js')
 
 import {URL} from 'node:url'
-import {promisify} from 'node:util'
-import {createServer} from 'node:http'
 import {after, before, test} from 'node:test'
 import assert from 'node:assert/strict'
-import listen from 'test-listen'
-import app from '../server/app.js'
+import {start, stop} from './__helper/server.js'
 
 const _options = {
 	redirect: 'follow',
@@ -19,12 +16,12 @@ let server
 let prefixUrl
 
 before(async () => {
-	server = createServer(app.callback())
-	prefixUrl = await listen(server)
+	// eslint-disable-next-line no-extra-semi
+	;({server, prefixUrl} = await start())
 })
 
 after(async () => {
-	await promisify(server.close.bind(server))()
+	await stop(server)
 })
 
 test('hey', async () => {
