@@ -61,8 +61,9 @@ bin/docker/start
 ```
 
 > [!IMPORTANT]  
-> No **docker**, caso seja instalado um novo pacote, é necessário fazer o `build` da imagem novamente.  
-> Pare o container (`bin/docker/stop` ou `control + c`) e rode novamente passando o parâmetro `-b`:
+> No **docker**, caso seja instalado um novo pacote, é necessário fazer o `build` da imagem novamente.
+
+Pare o container (`bin/docker/stop` ou `control + c`) e rode novamente passando o parâmetro `-b`:
 
 ```shell
 bin/docker/start -b
