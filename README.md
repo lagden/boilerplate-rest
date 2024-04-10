@@ -102,7 +102,9 @@ echo 'username' > .registry-user
 echo 'password' > .registry-passwd
 ```
 
-Verifique as suas variáveis de ambiente `.conf/*.sh`.  
+> [!IMPORTANT]  
+> Verifique as suas variáveis de ambiente `.conf/*.sh`.
+
 E para fazer o `push` da imagem de sua aplicação, execute:
 
 ```shell
