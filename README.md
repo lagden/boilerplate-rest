@@ -103,7 +103,7 @@ echo 'username' > .registry-user
 echo 'password' > .registry-passwd
 ```
 
-Verifique as suas variáveis de ambiente `.env-*`.  
+Verifique as suas variáveis de ambiente `.conf/*.sh`.  
 E para fazer o `push` da imagem de sua aplicação, execute:
 
 ```shell
@@ -157,9 +157,9 @@ Sugestão de outros **middlewares** para serem utilizados no projeto:
 - [koa-ratelimit](https://github.com/koajs/ratelimit)
 - [koa-static](https://github.com/koajs/static)
 
-## Donate ❤️
+## Buy me a coffee
 
-- BTC: bc1q7famhuj5f25n6qvlm3sssnymk2qpxrfwpyq7g4
+BTC: bc1q7famhuj5f25n6qvlm3sssnymk2qpxrfwpyq7g4
 
 ## License
 
