@@ -17,7 +17,7 @@
     "@tadashi/koa-base": "5.3.0",
     "@tadashi/local-access": "1.1.1",
     "@xet/log-google": "1.0.0",
-    "koa": "2.15.2",
+    "koa": "2.15.4",
     "koa-bodyparser": "4.4.1",
     "koa-compose": "4.1.0"
   },
